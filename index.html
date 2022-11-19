@@ -243,7 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-19 11:17:08 / Modified: 11:36:04" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:08+08:00">2022-11-19</time>
+      <time title="Created: 2022-11-19 11:17:08 / Modified: 11:38:09" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:08+08:00">2022-11-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -265,7 +265,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="客户端-client"><a href="#客户端-client" class="headerlink" title="客户端 client"></a>客户端 client</h2><ul>
+          <h1 id="oauth2安全测试用例"><a href="#oauth2安全测试用例" class="headerlink" title="oauth2安全测试用例"></a>oauth2安全测试用例</h1><h2 id="客户端-client"><a href="#客户端-client" class="headerlink" title="客户端 client"></a>客户端 client</h2><ul>
 <li><p>client的secret丢失</p>
 <ol>
 <li>对client进行基本安全检查，https，常见web owasp top 10扫描等</li>
@@ -280,7 +280,27 @@
 <li>检查 token scope的范围是否有效</li>
 <li>检查撤销 refresh token是否有效。</li>
 <li>当发现两个不同的app或者设备使用同一个refers token后，需要有refresh token轮换的机制。（在clustered environments环境可能存在问题。）</li>
-<li>用户可以申请将refresh token吊销
+<li>用户可以申请将refresh token吊销</li>
+</ol>
+</li>
+<li><p>Access Token丢失</p>
+<ol>
+<li>检查 access token 的生命周期，支付只过期时间只有5分钟，其他的可以到2小时以内。</li>
+<li>access token发送只允许使用HTTPS+POST方式</li>
+<li>client_id 和access token绑定</li>
+</ol>
+</li>
+<li><p>钓鱼攻击</p>
+<ol>
+<li>必须强制使用欢喜云进行账户登陆。</li>
+<li>必须检查应用是否通过调用欢喜云的方式来进行oauth交互</li>
+</ol>
+</li>
+<li><p>client跳转链接检查</p>
+<ol>
+<li>申请的跳转URI中禁止出现#，@ 特殊符号。</li>
+<li>必须对每次的redirect_uri与注册的uri进行检查，且完整匹配</li>
+<li>检查client_id是否和redirect_uri 一一对应
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/11/19/oauth2%20test/#more" rel="contents">

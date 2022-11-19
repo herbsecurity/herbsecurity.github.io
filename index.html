@@ -243,7 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-19 11:17:08 / Modified: 11:33:24" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:08+08:00">2022-11-19</time>
+      <time title="Created: 2022-11-19 11:17:08 / Modified: 11:36:04" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:08+08:00">2022-11-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -280,89 +280,15 @@
 <li>检查 token scope的范围是否有效</li>
 <li>检查撤销 refresh token是否有效。</li>
 <li>当发现两个不同的app或者设备使用同一个refers token后，需要有refresh token轮换的机制。（在clustered environments环境可能存在问题。）</li>
-<li>用户可以申请将refresh token吊销</li>
-</ol>
-</li>
-<li><p>Access Token丢失</p>
-<ol>
-<li>检查 access token 的生命周期，支付只过期时间只有5分钟，其他的可以到2小时以内。</li>
-<li>access token发送只允许使用HTTPS+POST方式</li>
-<li>client_id 和access token绑定</li>
-</ol>
-</li>
-<li><p>钓鱼攻击</p>
-<ol>
-<li>必须强制使用欢喜云进行账户登陆。</li>
-<li>必须检查应用是否通过调用欢喜云的方式来进行oauth交互</li>
-</ol>
-</li>
-<li><p>client跳转链接检查</p>
-<ol>
-<li>申请的跳转URI中禁止出现#，@ 特殊符号。</li>
-<li>必须对每次的redirect_uri与注册的uri进行检查，且完整匹配</li>
-<li>检查client_id是否和redirect_uri 一一对应</li>
-</ol>
-</li>
-</ul>
-<h2 id="授权端"><a href="#授权端" class="headerlink" title="授权端"></a>授权端</h2><ul>
-<li><p>伪造服务器</p>
-<ol>
-<li>使用TLS</li>
-</ol>
-</li>
-<li><p>用户允许太多scope</p>
-<ol>
-<li>告知用户scope具体含义，包含哪些信息</li>
-<li>减少scope的范围</li>
-</ol>
-</li>
-<li><p>恶意client通过欺骗的方式来获取授权码</p>
-<ol>
-<li>检查client是否和redirect_uri对应</li>
-<li>减少scope的范围</li>
-</ol>
-</li>
-<li><p>开放的redirector</p>
-<ol>
-<li>client_id必须和redirect_uri对应</li>
-</ol>
-</li>
-</ul>
-<h1 id="Token端"><a href="#Token端" class="headerlink" title="Token端"></a>Token端</h1><ul>
-<li><p>入侵授权服务器数据库</p>
-<ol>
-<li>安全基线和安全测试</li>
-<li>只允许存储access_token hash，而非明文</li>
-</ol>
-</li>
-<li><p>client_id和对应的secret在线猜解</p>
-<ol>
-<li>使用随机密码</li>
-<li>能够检查client_id在被猜解</li>
-</ol>
-</li>
-</ul>
-<h1 id="授权端-1"><a href="#授权端-1" class="headerlink" title="授权端"></a>授权端</h1><ul>
-<li><p>授权码泄露</p>
-<ol>
-<li>使用POST+HTTPS方式传输授权码</li>
-<li>检查授权码和对应的client_id 是否有效</li>
-<li>检查授权码的过期时间</li>
-<li>授权码不能猜测 </li>
-<li>授权码和client绑定</li>
-<li>授权码只能使用一次</li>
-</ol>
-</li>
-<li><p>CSRF</p>
-<ol>
-<li>在授权请求阶段使用state+code，当client返回时需要检查state是否和之前发送的state一致。</li>
-<li>检查Referer，全站禁止CSRF漏洞。</li>
-<li>告知用户已经开启了哪些应用的oauth服务。</li>
-<li>用户可以举报自己授权的第三方应用存在安全风险。</li>
-</ol>
-</li>
-</ul>
-
+<li>用户可以申请将refresh token吊销
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/19/oauth2%20test/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

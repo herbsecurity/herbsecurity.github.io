@@ -154,6 +154,16 @@
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
   </nav>
 </div>
   <div class="links-of-author site-overview-item animated">
@@ -203,7 +213,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2022/11/19/oauth2%E6%B5%8B%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2022/11/19/oauth2%20test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -221,7 +231,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/19/oauth2%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">Untitled</a>
+          <a href="/2022/11/19/oauth2%20test/" class="post-title-link" itemprop="url">oauth2安全测试用例</a>
         </h2>
 
         <div class="post-meta-container">
@@ -233,7 +243,16 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-11-19 11:17:09 / Modified: 11:21:50" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:09+08:00">2022-11-19</time>
+      <time title="Created: 2022-11-19 11:17:08 / Modified: 11:33:24" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:08+08:00">2022-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
+        </span>
     </span>
 
   
@@ -246,10 +265,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>title:『oauth2测试』<br>date:2022-11-19 11:17:08<br>tags:oauth2,pentest<br>categories:security</p>
-<hr>
-<h1 id="Oauth2-0安全测试用例"><a href="#Oauth2-0安全测试用例" class="headerlink" title="Oauth2.0安全测试用例"></a>Oauth2.0安全测试用例</h1><h2 id="客户端-client"><a href="#客户端-client" class="headerlink" title="客户端 client"></a>客户端 client</h2><ul>
+          <h2 id="客户端-client"><a href="#客户端-client" class="headerlink" title="客户端 client"></a>客户端 client</h2><ul>
 <li><p>client的secret丢失</p>
 <ol>
 <li>对client进行基本安全检查，https，常见web owasp top 10扫描等</li>

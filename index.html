@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,110 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Herb Security">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Herb Security">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Herb Security">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Tesla pentest 工程师面试记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-19 11:17:08" itemprop="dateCreated datePublished" datetime="2023-01-19T11:17:08+08:00">2023-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-03-02 15:53:39" itemprop="dateModified" datetime="2023-03-02T15:53:39+08:00">2023-03-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Tesla-pentest-工程师面试记录"><a href="#Tesla-pentest-工程师面试记录" class="headerlink" title="Tesla pentest 工程师面试记录"></a>Tesla pentest 工程师面试记录</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在 linkedin 勾搭上了 tesla 的 HR， 加了微信简单聊了下，然后约了一下技术面试。 技术面试主要是要入侵一个测试网站，时间有6个小时。</p>
+<p>结果是没有后续，我只拿到了 admin 权限，没有 get shell 。 期间服务器被我fuzz 了很多次502， 他们的服务器及其不稳定， 如果后续有小伙伴要面试，请小心 fuzz，或者不要 fuzz ，只看有的功能点</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>当天晚上开始的， 一个 php 搭的站点，很简单。</p>
+<p>坑点1，不要以为前端的倒计时是摆设： </p>
+<ul>
+<li>在登录网站的时候需要输入用户名和密码，然后倒计时启动，我直接用 burpsuite 删除了前端的onload 代码，但是还在想这个前端倒计时怕是没啥卵用，所以也不紧不慢的测试，但是六个小时候，我被强制登录，此时原来的密码无法使用了。 我估计他们做了自动化更新，所以6个小时候，这个密码无法使用了， 怀疑是自动化工具改了 nginx 配置文件。</li>
+</ul>
+<p>坑点2， 不要扫描，服务器及其不稳定：</p>
+<ul>
+<li>使用 fuzz 做了登录爆破的操作，其实完全不需要，后面有功能可以直接绕过登录操作。 我过于追求发现更多的漏洞，忽略了应该多考虑提权。</li>
+</ul>
+<p>坑点3， 服务器重置找不到人：</p>
+<ul>
+<li>我以为他们有什么自动重置机制，结果还是人工重置，因为我在周末的晚上测试，所以导致我联系不到人充值服务器，不停的看着 502 错误，很不爽。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>重视时间，说了有倒计时不要以为仅仅是个前端界面。</li>
+<li>对他们的服务器稳定性不要期待</li>
+<li>如果你没有成功，并不意味你很失败，一次普通的 ctf 而已，以后会有更好的机会。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -336,7 +440,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

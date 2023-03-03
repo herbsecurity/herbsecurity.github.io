@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://herbsecurity.github.io/2023/03/03/bug%20hunter%20%E6%BC%8F%E6%B4%9E%E8%B5%8F%E9%87%91%E7%8C%8E%E4%BA%BA%E5%88%86%E4%BA%AB/</loc>
+    
+    <lastmod>2023-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://herbsecurity.github.io/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2023-03-02</lastmod>
@@ -49,7 +58,7 @@
 
   <url>
     <loc>https://herbsecurity.github.io/</loc>
-    <lastmod>2023-03-02</lastmod>
+    <lastmod>2023-03-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -57,21 +66,28 @@
   
   <url>
     <loc>https://herbsecurity.github.io/tags/oauth2/</loc>
-    <lastmod>2023-03-02</lastmod>
+    <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://herbsecurity.github.io/tags/pentest/</loc>
-    <lastmod>2023-03-02</lastmod>
+    <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://herbsecurity.github.io/tags/pentest-interview/</loc>
-    <lastmod>2023-03-02</lastmod>
+    <lastmod>2023-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://herbsecurity.github.io/tags/pentest-bughunter/</loc>
+    <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -80,7 +96,7 @@
   
   <url>
     <loc>https://herbsecurity.github.io/categories/security/</loc>
-    <lastmod>2023-03-02</lastmod>
+    <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"herbsecurity.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置  Java 开发环境安装 打开你的终端， 输入 javac 如果提示无此应用程序说明">
+    <meta name="description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Burpsuite 插件开发之环境搭建(基于Montoya API)">
 <meta property="og:url" content="https://herbsecurity.github.io/2023/03/03/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="Herb Security">
-<meta property="og:description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置  Java 开发环境安装 打开你的终端， 输入 javac 如果提示无此应用程序说明">
+<meta property="og:description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-03T03:17:08.000Z">
-<meta property="article:modified_time" content="2023-09-09T09:04:39.671Z">
+<meta property="article:modified_time" content="2023-09-09T09:11:36.096Z">
 <meta property="article:author" content="Herb Security">
 <meta property="article:tag" content="pentest - tools">
 <meta name="twitter:card" content="summary">
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-09 17:04:39" itemprop="dateModified" datetime="2023-09-09T17:04:39+08:00">2023-09-09</time>
+      <time title="Modified: 2023-09-09 17:11:36" itemprop="dateModified" datetime="2023-09-09T17:11:36+08:00">2023-09-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,6 +286,8 @@
 <li>IDE 集成</li>
 <li>Gradle 环境配置</li>
 </ul>
+<span id="more"></span>
+
 <h3 id="Java-开发环境安装"><a href="#Java-开发环境安装" class="headerlink" title="Java 开发环境安装"></a>Java 开发环境安装</h3><ul>
 <li><p>打开你的终端， 输入 javac 如果提示无此应用程序说明你需要搭建 Java 开发环境。</p>
 <p>  下面链接会介绍 不同环境如何安装，并介绍 JDK ，JRE， openjdk， orcaljdk 的一些区别， 由于Java 安装环境不是此文重点，故直接参考下面链接即可安装Java 基本开发环境。 </p>

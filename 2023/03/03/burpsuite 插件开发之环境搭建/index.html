@@ -19,23 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"herbsecurity.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Herb Security">
-<meta property="og:url" content="https://herbsecurity.github.io/index.html">
+    <meta name="description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置  Java 开发环境安装 打开你的终端， 输入 javac 如果提示无此应用程序说明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Burpsuite 插件开发之环境搭建(基于Montoya API)">
+<meta property="og:url" content="https://herbsecurity.github.io/2023/03/03/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="Herb Security">
+<meta property="og:description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置  Java 开发环境安装 打开你的终端， 输入 javac 如果提示无此应用程序说明">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-03T03:17:08.000Z">
+<meta property="article:modified_time" content="2023-09-09T09:04:39.671Z">
 <meta property="article:author" content="Herb Security">
+<meta property="article:tag" content="pentest - tools">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://herbsecurity.github.io/">
+<link rel="canonical" href="https://herbsecurity.github.io/2023/03/03/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://herbsecurity.github.io/2023/03/03/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/","path":"2023/03/03/burpsuite 插件开发之环境搭建/","title":"Burpsuite 插件开发之环境搭建(基于Montoya API)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Herb Security</title>
+<title>Burpsuite 插件开发之环境搭建(基于Montoya API) | Herb Security</title>
   
 
 
@@ -66,7 +71,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Herb Security</h1>
+      <p class="site-title">Herb Security</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -125,7 +130,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -138,6 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Burpsuite-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">Burpsuite 插件开发之环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E7%8E%AF%E5%A2%83%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">所需环境介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">Java 开发环境安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA-%E7%8E%AF%E5%A2%83-%E5%92%8C-Gradle-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">IDEA 环境 和 Gradle 环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA-Helloworld"><span class="nav-number">1.2.</span> <span class="nav-text">编写一个 Helloworld</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E6%9C%9F%E5%86%85%E5%AE%B9"><span class="nav-number">1.3.</span> <span class="nav-text">下期内容</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -203,103 +209,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2023/03/03/bug%20hunter%20%E6%BC%8F%E6%B4%9E%E8%B5%8F%E9%87%91%E7%8C%8E%E4%BA%BA%E5%88%86%E4%BA%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Herb Security">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Herb Security">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Herb Security">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/03/bug%20hunter%20%E6%BC%8F%E6%B4%9E%E8%B5%8F%E9%87%91%E7%8C%8E%E4%BA%BA%E5%88%86%E4%BA%AB/" class="post-title-link" itemprop="url">Bug hunter 漏洞赏金猎人经验分享</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2023-03-03 11:17:08 / Modified: 23:11:05" itemprop="dateCreated datePublished" datetime="2023-03-03T11:17:08+08:00">2023-03-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Bug-hunter-漏洞赏金猎人经验分享"><a href="#Bug-hunter-漏洞赏金猎人经验分享" class="headerlink" title="Bug hunter 漏洞赏金猎人经验分享"></a>Bug hunter 漏洞赏金猎人经验分享</h1><p><strong>作者： Vin &amp; Neo</strong></p>
-<h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>此文的目的是帮助大家如何开始你的 Bug hunter 生涯，并且能拿到尽可能多的赏金。 Vin 是一名全职的赏金猎人，已经在 Tiktok等知名平台上发现了多个高中危漏洞，Neo 在一家跨国公司且会on-call HackerOne 的漏洞并且给出 bounty 即赏金的授予建议，所以结合两人的经验有了此文。  </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/03/bug%20hunter%20%E6%BC%8F%E6%B4%9E%E8%B5%8F%E9%87%91%E7%8C%8E%E4%BA%BA%E5%88%86%E4%BA%AB/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2023/03/03/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -313,13 +233,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Herb Security">
+      <meta itemprop="name" content="Burpsuite 插件开发之环境搭建(基于Montoya API) | Herb Security">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/03/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">Burpsuite 插件开发之环境搭建(基于Montoya API)</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Burpsuite 插件开发之环境搭建(基于Montoya API)
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -358,7 +278,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Burpsuite-插件开发之环境搭建"><a href="#Burpsuite-插件开发之环境搭建" class="headerlink" title="Burpsuite 插件开发之环境搭建"></a>Burpsuite 插件开发之环境搭建</h1><p><strong>作者： Neo</strong></p>
+        <h1 id="Burpsuite-插件开发之环境搭建"><a href="#Burpsuite-插件开发之环境搭建" class="headerlink" title="Burpsuite 插件开发之环境搭建"></a>Burpsuite 插件开发之环境搭建</h1><p><strong>作者： Neo</strong></p>
 <p>最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。</p>
 <h2 id="所需环境介绍"><a href="#所需环境介绍" class="headerlink" title="所需环境介绍"></a>所需环境介绍</h2><p>开发 burpsuite 需要搭建如下环境</p>
 <ul>
@@ -408,7 +328,6 @@ java --version
 <p>![截屏2023-09-09 17.01.10](burpsuite 插件开发之环境搭建&#x2F;截屏2023-09-09 17.01.10.jpg)</p>
 <h2 id="下期内容"><a href="#下期内容" class="headerlink" title="下期内容"></a>下期内容</h2><p>下期会结合 burpsuite 的一些 API 来实现复杂功能，以及界面实现，敬请期待。</p>
 
-      
     </div>
 
     
@@ -416,223 +335,24 @@ java --version
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
+          <div class="post-tags">
+              <a href="/tags/pentest-tools/" rel="tag"># pentest - tools</a>
+          </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Herb Security">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Herb Security">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Herb Security">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Tesla pentest 工程师面试记录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-01-19 11:17:08" itemprop="dateCreated datePublished" datetime="2023-01-19T11:17:08+08:00">2023-01-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-02 19:16:15" itemprop="dateModified" datetime="2023-03-02T19:16:15+08:00">2023-03-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Tesla-pentest-工程师面试记录"><a href="#Tesla-pentest-工程师面试记录" class="headerlink" title="Tesla pentest 工程师面试记录"></a>Tesla pentest 工程师面试记录</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在 linkedin 勾搭上了 tesla 的 HR， 加了微信简单聊了下，然后约了一下技术面试。 技术面试主要是要入侵一个测试网站，时间有6个小时。</p>
-<p>结果是没有后续，我只拿到了 admin 权限，没有 get shell 。 期间服务器被我fuzz 了很多次502， 他们的服务器及其不稳定， 如果后续有小伙伴要面试，请小心 fuzz，或者不要 fuzz ，只看有的功能点</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://herbsecurity.github.io/2022/11/19/oauth2%20test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Herb Security">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Herb Security">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Herb Security">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/19/oauth2%20test/" class="post-title-link" itemprop="url">oauth2安全测试用例</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-11-19 11:17:08 / Modified: 11:57:23" itemprop="dateCreated datePublished" datetime="2022-11-19T11:17:08+08:00">2022-11-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="oauth2安全测试用例"><a href="#oauth2安全测试用例" class="headerlink" title="oauth2安全测试用例"></a>oauth2安全测试用例</h1><h2 id="客户端-client"><a href="#客户端-client" class="headerlink" title="客户端 client"></a>客户端 client</h2><ul>
-<li><p>client的secret丢失</p>
-<ol>
-<li>对client进行基本安全检查，https，常见web owasp top 10扫描等</li>
-<li>有用户确认授权的窗口</li>
-<li>能够吊销client的secrets，吊销后无法使用</li>
-<li>基于web，app，设置不同的client_id 以及对应的secret</li>
-</ol>
-</li>
-<li><p>Refresh Token丢失</p>
-<ol>
-<li>检查client_id 和 对应的refresh token 有效性</li>
-<li>检查 token scope的范围是否有效</li>
-<li>检查撤销 refresh token是否有效。</li>
-<li>当发现两个不同的app或者设备使用同一个refers token后，需要有refresh token轮换的机制。（在clustered environments环境可能存在问题。）</li>
-<li>用户可以申请将refresh token吊销</li>
-</ol>
-</li>
-<li><p>Access Token丢失</p>
-<ol>
-<li>检查 access token 的生命周期，支付只过期时间只有5分钟，其他的可以到2小时以内。</li>
-<li>access token发送只允许使用HTTPS+POST方式</li>
-<li>client_id 和access token绑定</li>
-</ol>
-</li>
-<li><p>钓鱼攻击</p>
-<ol>
-<li>必须强制使用<em>云应用</em>进行账户登陆。</li>
-<li>必须检查应用是否通过调用<em>云应用</em>的方式来进行oauth交互</li>
-</ol>
-</li>
-<li><p>client跳转链接检查</p>
-<ol>
-<li>申请的跳转URI中禁止出现#，@ 特殊符号。</li>
-<li>必须对每次的redirect_uri与注册的uri进行检查，且完整匹配</li>
-<li>检查client_id是否和redirect_uri 一一对应
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/19/oauth2%20test/#more" rel="contents">
-                Read more &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/19/Tesla%20pentest%20%E8%AE%B0%E5%BD%95/" rel="prev" title="Tesla pentest 工程师面试记录">
+                  <i class="fa fa-chevron-left"></i> Tesla pentest 工程师面试记录
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+            <div class="post-nav-item">
+                <a href="/2023/03/03/bug%20hunter%20%E6%BC%8F%E6%B4%9E%E8%B5%8F%E9%87%91%E7%8C%8E%E4%BA%BA%E5%88%86%E4%BA%AB/" rel="next" title="Bug hunter 漏洞赏金猎人经验分享">
+                  Bug hunter 漏洞赏金猎人经验分享 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -641,6 +361,8 @@ java --version
 
 
 
+
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 

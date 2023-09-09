@@ -26,11 +26,16 @@
 <meta property="og:site_name" content="Herb Security">
 <meta property="og:description" content="Burpsuite 插件开发之环境搭建作者： Neo 最近在尝试整合Chatgpt 和 Burpsuite， 故有此文。 本文将会从环境搭建开始，并介绍如何引入第三方 API和 Java 界面环境。 所需环境介绍开发 burpsuite 需要搭建如下环境  Java 开发环境 IDE 集成 Gradle 环境配置">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://herbsecurity.github.io/images/1.jpg">
+<meta property="og:image" content="https://herbsecurity.github.io/images/2.jpg">
+<meta property="og:image" content="https://herbsecurity.github.io/images/image-20230909170356717-4250243-4250245.png">
+<meta property="og:image" content="https://herbsecurity.github.io/images/4.jpg">
 <meta property="article:published_time" content="2023-09-09T03:17:08.000Z">
-<meta property="article:modified_time" content="2023-09-09T09:37:15.345Z">
+<meta property="article:modified_time" content="2023-09-09T09:50:48.705Z">
 <meta property="article:author" content="Herb Security">
 <meta property="article:tag" content="pentest - tools">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://herbsecurity.github.io/images/1.jpg">
 
 
 <link rel="canonical" href="https://herbsecurity.github.io/2023/09/09/burpsuite%20%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
@@ -250,7 +255,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-09-09 11:17:08 / Modified: 17:37:15" itemprop="dateCreated datePublished" datetime="2023-09-09T11:17:08+08:00">2023-09-09</time>
+      <time title="Created: 2023-09-09 11:17:08 / Modified: 17:50:48" itemprop="dateCreated datePublished" datetime="2023-09-09T11:17:08+08:00">2023-09-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +304,7 @@ java --version
 <h3 id="IDEA-环境-和-Gradle-环境配置"><a href="#IDEA-环境-和-Gradle-环境配置" class="headerlink" title="IDEA 环境 和 Gradle 环境配置"></a>IDEA 环境 和 Gradle 环境配置</h3><ol>
 <li>打开 IntelliJ IDEA 新建项目,输入 name  和 add sample code , 然后定义你的 GroupId 即可</li>
 </ol>
-<p>![](截屏2023-09-09 16.53.53-4251047-4251048-4251049.jpg)</p>
+<p><img src="/images/1.jpg"></p>
 <ol start="2">
 <li><p>在 build.gradle 添加插件需要的依赖</p>
 <p> 依赖是代码需要的一些公共组件，需要在 repositories 中定义从哪个地方下载依赖。</p>
@@ -313,15 +318,15 @@ java --version
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package herbsecurity;</span><br><span class="line">import burp.api.montoya.BurpExtension;</span><br><span class="line">import burp.api.montoya.MontoyaApi;</span><br><span class="line"></span><br><span class="line">public class Main implements BurpExtension &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello world!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void initialize(MontoyaApi montoyaApi) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>![截屏2023-09-09 16.53.53](burpsuite 插件开发之环境搭建&#x2F;截屏2023-09-09 16.53.53.jpg)</p>
+<p><img src="/images/2.jpg" alt="截屏2023-09-09 16.53.53"></p>
 <h2 id="编写一个-Helloworld"><a href="#编写一个-Helloworld" class="headerlink" title="编写一个 Helloworld"></a>编写一个 Helloworld</h2><p>code</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package herbsecurity;</span><br><span class="line">import burp.api.montoya.BurpExtension;</span><br><span class="line">import burp.api.montoya.MontoyaApi;</span><br><span class="line">import burp.api.montoya.logging.Logging;</span><br><span class="line"></span><br><span class="line">public class Main implements BurpExtension &#123;</span><br><span class="line">//    public static void main(String[] args) &#123;</span><br><span class="line">////        System.out.println(&quot;Hello world!&quot;);</span><br><span class="line">//    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void initialize(MontoyaApi api) &#123;</span><br><span class="line"></span><br><span class="line">        api.extension().setName(&quot;Hello world extension&quot;);</span><br><span class="line"></span><br><span class="line">        Logging logging = api.logging();</span><br><span class="line"></span><br><span class="line">        // write a message to our output stream</span><br><span class="line">        logging.logToOutput(&quot;Hello output.&quot;);</span><br><span class="line"></span><br><span class="line">        // write a message to our error stream</span><br><span class="line">        logging.logToError(&quot;Hello error.&quot;);</span><br><span class="line"></span><br><span class="line">        // write a message to the Burp alerts tab</span><br><span class="line">        logging.raiseInfoEvent(&quot;Hello info event.&quot;);</span><br><span class="line">        logging.raiseDebugEvent(&quot;Hello debug event.&quot;);</span><br><span class="line">        logging.raiseErrorEvent(&quot;Hello error event.&quot;);</span><br><span class="line">        logging.raiseCriticalEvent(&quot;Hello critical event.&quot;);</span><br><span class="line"></span><br><span class="line">        // throw an exception that will appear in our error stream</span><br><span class="line">        throw new RuntimeException(&quot;Hello exception.&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>切换到 build.gradle</p>
 <p>然后点击  jar 即可执行编译</p>
-<p>![image-20230909170356717](burpsuite 插件开发之环境搭建&#x2F;image-20230909170356717-4250243-4250245.png)</p>
+<p><img src="/images/image-20230909170356717-4250243-4250245.png" alt="image-20230909170356717"></p>
 <p>期望的输出：</p>
-<p>![截屏2023-09-09 17.01.10](截屏2023-09-09 17.01.10.jpg)</p>
+<p><img src="/images/4.jpg" alt="截屏2023-09-09 17.01.10"></p>
 <h2 id="下期内容"><a href="#下期内容" class="headerlink" title="下期内容"></a>下期内容</h2><p>下期会结合 burpsuite 的一些 API 来实现复杂功能，以及界面实现，敬请期待。</p>
 
     </div>
